@@ -1,0 +1,10 @@
+.nav {
+  display: flex;
+  gap: 10px;
+}
+
+.item {
+  font-weight: bold;
+  color: blue;
+  border-bottom: 1px solid blue;
+}

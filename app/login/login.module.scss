@@ -1,0 +1,10 @@
+@use "sass:map";
+@use '../../utils/styles/mixins.module.scss' as mixins;
+@use '../../utils/styles/space.module.scss' as space;
+
+.form {
+  @include mixins.container;
+  display: flex;
+  flex-direction: column;
+  gap: map.get(space.$gap, 'small')
+}

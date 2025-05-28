@@ -1,0 +1,13 @@
+@use "sass:map";
+@use '../../utils/styles/space.module.scss' as space;
+@use '../../utils/styles/colors.module.scss' as colors;
+
+.button {
+  padding: map.get(space.$gap, 'small');
+  background-color: map.get(colors.$colors, 'blue');
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
