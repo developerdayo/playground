@@ -1,5 +1,5 @@
 import { Navigation } from "../../components/Navigation/Navigation"
-import { MOCK_LINKS } from "../../mock/links"
+import { MOCK_LINKS } from "../../mocks/links"
 
 export const Page = () => {
   return (

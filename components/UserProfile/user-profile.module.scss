@@ -1,0 +1,8 @@
+@use "sass:map";
+@use '../../utils/styles/space.module.scss' as space;
+@use '../../utils/styles/colors.module.scss' as colors;
+@use '../../utils/styles/mixins.module.scss' as mixins;
+
+.container {
+  @include mixins.container;
+}

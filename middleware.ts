@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import { updateSession } from "./utils/supabase/middleware";
+import { updateSession } from "./lib/supabase/middleware";
 
 export const middleware = async (request: NextRequest) => {
   console.log('\x1b[36m%s\x1b[0m', '🔵 middleware running');

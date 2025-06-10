@@ -1,15 +1,40 @@
+'use client'
+
+import { Ref } from 'react'
 import ButtonCss from './buttton.module.scss'
+import clsx from 'clsx'
+import { Button as RACButton } from 'react-aria-components'
 
 type ButtonType = {
-    children: React.ReactNode
-    callback?: () => void
-    formAction?: React.ButtonHTMLAttributes<HTMLButtonElement>['formAction']
+  children: React.ReactNode
+  onClick?: () => void
+  formAction?: React.ButtonHTMLAttributes<HTMLButtonElement>['formAction']
+  ref?: Ref<HTMLButtonElement>
+  className?: string | string[]
 }
 
-export const Button = ({children, callback, formAction}: ButtonType) => {
-  return (
-    <button onClick={callback} formAction={formAction} className={ButtonCss['button']}>
+/**
+ * Uses React Aria Button component unless if a server action is passed to it.
+ */
+export const Button = ({children, onClick, formAction, ref, className, ...props}: ButtonType) => {
+  return formAction ? (
+    <button
+      className={clsx(className)}
+      formAction={formAction}
+      onClick={onClick}
+      ref={ref}
+      {...props}
+    >
       {children}
     </button>
-  )
+    ) : (
+      <RACButton
+        className={clsx(className)}
+        onPress={onClick}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </RACButton>
+    )
 }

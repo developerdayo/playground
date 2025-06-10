@@ -1,20 +1,32 @@
-/**
- * Simple Input field that allows text and email types
- * Toggle option to show label on/off easily
- */
-type InputFieldType = {
-  name: string
-  hideLabel: boolean
-  isRequired: boolean
-  labelText?: string
-  type: Extract<React.InputHTMLAttributes<HTMLInputElement>['type'], 'text' | 'email' | 'password'>
-}
+'use client'
 
-export const InputField = ({name, hideLabel, labelText, isRequired, type }: InputFieldType) => {
+import type { TextFieldProps, LabelProps, InputProps } from "react-aria-components";
+import { Input as RACInput, TextField as RACTextField, Label as RACLabel } from "react-aria-components";
+
+/**
+ * Composite component build with React Aria TextField, Label, and Input.
+ */
+type InputFieldProps = {
+  isRequired: boolean
+  label?: string
+  name?: string
+  inputProps?: InputProps
+  labelProps?: LabelProps
+} & TextFieldProps
+
+export const InputField = ({
+  isRequired,
+  label,
+  name,
+  type,
+  inputProps,
+  labelProps,
+  ...textFieldProps
+}: InputFieldProps) => {
   return (
-    <>
-      <label htmlFor={name} aria-required={isRequired} hidden={hideLabel}>{labelText}</label>
-      <input id={name} name={name} type={type} required={isRequired} />
-    </>
+    <RACTextField type={type} {...textFieldProps}>
+      <RACLabel {...labelProps}>{label}</RACLabel>
+      <RACInput required={isRequired} name={name} {...inputProps} />
+    </RACTextField>
   );
 }

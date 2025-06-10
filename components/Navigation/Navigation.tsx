@@ -1,10 +1,13 @@
-import { headers } from "next/headers"
-import navigationCss from "./navigation.module.css";
-import Link from "../Link/Link"
-import Text from "../Text/Text";
-import { HEADER_CURRENT_PATH } from "../../utils/variables";
+'use client'
 
-type NavigationItemType = {
+import { usePathname } from "next/navigation";
+
+import Link from "@components/Link/Link"
+import Text from "@components/Text/Text";
+
+import navigationCss from "./navigation.module.css";
+
+export type NavigationItemType = {
   name: string,
   url: string
 }
@@ -13,13 +16,11 @@ type NavigationType = {
   items:  NavigationItemType[]
 }
 
-const NavigationLink = async ({url, name}: NavigationItemType) => {
-
-  let currentPathnameHeader = await headers().then((headers) => headers.get(HEADER_CURRENT_PATH))
-  currentPathnameHeader = currentPathnameHeader != null ? currentPathnameHeader : ''
+const NavigationLink = ({url, name}: NavigationItemType) => {
+  const currentPath = usePathname()
 
   return (
-    currentPathnameHeader === url ? (
+    currentPath === url ? (
       <Text tag={"span"} className={navigationCss['item--active']} isCurrent={"true"}>{name}</Text>
     ) : (
       <Link url={url} className={navigationCss['item']} isCurrent={"false"} name={name}></Link>
@@ -27,8 +28,7 @@ const NavigationLink = async ({url, name}: NavigationItemType) => {
   )
 }
 
-export const Navigation = async ({ items }: NavigationType) => {
-
+export const Navigation = ({ items }: NavigationType) => {
   return (
     items.length > 0 ? (
       <nav className={navigationCss['nav']}>

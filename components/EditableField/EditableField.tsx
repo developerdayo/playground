@@ -1,0 +1,42 @@
+import { useRef, useState } from 'react'
+
+import { Button } from '@components/Buttton/Button'
+
+import editableFieldCss from './editable-field.module.scss'
+
+type EditableFieldProps = {
+  label: string
+  fieldValue: string
+  fieldName: string
+  inputType: "text" | "email"
+  onSave: (field: string, value: string) => Promise<void>
+}
+
+export const EditableField = ({label, fieldName, fieldValue, inputType, onSave}: EditableFieldProps) => {
+  const [isEditMode, setIsEditMode] = useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const handleSave = async () => {
+    if (inputRef.current?.value) {
+      await onSave(fieldName, inputRef.current.value)
+      setIsEditMode(false)
+    }
+  }
+
+  return (
+    isEditMode ? (
+      <div className={editableFieldCss['container']}>
+        <p>{label}: <input type={inputType} ref={inputRef} /></p>
+        <Button onClick={() => setIsEditMode(false)} className={[editableFieldCss['button'], editableFieldCss['cancel-button']]}>Cancel</Button>
+        <Button onClick={async () => {
+          handleSave()
+        }} className={editableFieldCss['button']}>Save</Button>
+      </div>
+    ) : (
+      <div className={editableFieldCss['container']}>
+        <p>{label}: {fieldValue} </p>
+        <Button onClick={() => setIsEditMode(true)} className={editableFieldCss['button']}>Edit</Button>
+      </div>
+    )
+  )
+}

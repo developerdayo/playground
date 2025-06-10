@@ -1,6 +1,8 @@
-import { NavigationItemType } from "../Navigation/Navigation"
+import type { NavigationItemType } from "@components/Navigation/Navigation"
+
 import { default as NextLink } from "next/link"
-import Text from "../Text/Text"
+
+import Text from "@components/Text/Text"
 
 type LinkType = {
   isCurrent: "true" | "false"
