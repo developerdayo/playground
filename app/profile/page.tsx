@@ -1,4 +1,3 @@
-import logger from "../../lib/supabase/logger"
 import { createClient } from "../../lib/supabase/server"
 
 import profilePageCss from './profile.module.scss'

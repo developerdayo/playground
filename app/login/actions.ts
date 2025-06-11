@@ -36,6 +36,5 @@ export async function signup(formData: FormData) {
 
   if (error) return { error: error.message }
 
-  redirectAndRevalidateCache('/', '/', 'layout')
   return { success: true }
 }

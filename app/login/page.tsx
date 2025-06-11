@@ -10,6 +10,7 @@ import { useState } from "react"
 
 export default function LoginPage() {
   const [error, setError] = useState<string | null>(null)
+  const [isSuccess, setIsSuccess] = useState(false)
 
   const handleLogin = async (formData: FormData) => {
 
@@ -19,6 +20,7 @@ export default function LoginPage() {
   const handleSignup = async (formData: FormData) => {
     const result = await signup(formData)
     result.error && setError(result.error)
+    result.success && setIsSuccess(result.success)
   }
   return (
     <Form className={loginCss['form']}>
@@ -35,6 +37,7 @@ export default function LoginPage() {
         type='password'
       />
       {error && <p className={loginCss['error']}>{error}</p>}
+      {isSuccess && <p>Please check your email to validate the creation of your account.</p>}
       <Button className={buttonCss['button']} formAction={handleLogin}>Log in</Button>
       <Button className={buttonCss['button']} formAction={handleSignup}>Sign up</Button>
     </Form>
