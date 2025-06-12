@@ -27,15 +27,15 @@ export const EditableField = ({label, fieldName, fieldValue, inputType, onSave}:
     isEditMode ? (
       <div className={editableFieldCss['container']}>
         <p>{label}: <input type={inputType} ref={inputRef} /></p>
-        <Button onClick={() => setIsEditMode(false)} className={[editableFieldCss['button'], editableFieldCss['cancel-button']]}>Cancel</Button>
-        <Button onClick={async () => {
+        <Button onPress={() => setIsEditMode(false)} className={[editableFieldCss['button'], editableFieldCss['cancel-button']]}>Cancel</Button>
+        <Button onPress={async () => {
           handleSave()
         }} className={editableFieldCss['button']}>Save</Button>
       </div>
     ) : (
       <div className={editableFieldCss['container']}>
         <p>{label}: {fieldValue} </p>
-        <Button onClick={() => setIsEditMode(true)} className={editableFieldCss['button']}>Edit</Button>
+        <Button onPress={() => setIsEditMode(true)} className={editableFieldCss['button']}>Edit</Button>
       </div>
     )
   )

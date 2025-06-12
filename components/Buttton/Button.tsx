@@ -7,7 +7,7 @@ import { Button as RACButton } from 'react-aria-components'
 
 type ButtonType = {
   children: React.ReactNode
-  onClick?: () => void
+  onPress?: () => void
   formAction?: React.ButtonHTMLAttributes<HTMLButtonElement>['formAction']
   ref?: Ref<HTMLButtonElement>
   className?: string | string[]
@@ -16,12 +16,12 @@ type ButtonType = {
 /**
  * Uses React Aria Button component unless if a server action is passed to it.
  */
-export const Button = ({children, onClick, formAction, ref, className, ...props}: ButtonType) => {
+export const Button = ({children, onPress, formAction, ref, className, ...props}: ButtonType) => {
   return formAction ? (
     <button
       className={clsx(className)}
       formAction={formAction}
-      onClick={onClick}
+      onClick={onPress}
       ref={ref}
       {...props}
     >
@@ -30,7 +30,7 @@ export const Button = ({children, onClick, formAction, ref, className, ...props}
     ) : (
       <RACButton
         className={clsx(className)}
-        onPress={onClick}
+        onPress={onPress}
         ref={ref}
         {...props}
       >
