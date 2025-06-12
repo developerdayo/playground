@@ -2,7 +2,7 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import pino from "pino";
 import { pinoHttp } from "pino-http";
 
-const isProd = process.env.NEXT_PUBLIC_ENV === 'production'
+const isProd = process.env.APP_ENV === 'production'
 
 const logger = pino({
   redact: {
