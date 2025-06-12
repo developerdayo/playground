@@ -6,6 +6,7 @@
   padding: map.get(space.$gap, 'small');
   background-color: map.get(colors.$colors, 'blue');
   border: none;
+  color: map.get(colors.$colors, 'yellow');
 
   &:hover {
     cursor: pointer;

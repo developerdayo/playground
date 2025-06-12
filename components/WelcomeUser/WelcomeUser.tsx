@@ -1,9 +1,13 @@
+import { ProfileSchema } from "@/utils/schemas"
 import { createClient } from "@lib/supabase/server"
 
 export const WelcomeUser = async () => {
   const supabase = await createClient()
-  const { data } = await supabase.auth.getUser()
-  const userEmail = data.user?.email
+  const { data } = await supabase.from('profiles').select()
 
-  return <p>Welcome {userEmail}</p>
+  if (data === null || data.length === 0) return
+
+  const userName = ProfileSchema.parse(data[0]).first_name
+
+  return <p>Welcome {userName}!</p>
 }

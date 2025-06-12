@@ -345,9 +345,9 @@
     "@emnapi/runtime" "^1.4.3"
     "@tybys/wasm-util" "^0.9.0"
 
-"@next/env@15.3.2":
+"@next/NEXT_PUBLIC_ENV@15.3.2":
   version "15.3.2"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-15.3.2.tgz#7143eafa9b11cfdf3d3c7318b0facb9dfdb2948f"
+  resolved "https://registry.yarnpkg.com/@next/NEXT_PUBLIC_ENV/-/NEXT_PUBLIC_ENV-15.3.2.tgz#7143eafa9b11cfdf3d3c7318b0facb9dfdb2948f"
   integrity sha512-xURk++7P7qR9JG1jJtLzPzf0qEvqCN0A/T3DXf8IPMKo9/6FfjxtEffRJIIew/bIL4T3C2jLLqBor8B/zVlx6g==
 
 "@next/eslint-plugin-next@15.3.2":
@@ -3474,9 +3474,9 @@ lodash.merge@^4.6.2:
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
-loose-envify@^1.4.0:
+loose-NEXT_PUBLIC_ENVify@^1.4.0:
   version "1.4.0"
-  resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
+  resolved "https://registry.yarnpkg.com/loose-NEXT_PUBLIC_ENVify/-/loose-NEXT_PUBLIC_ENVify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
@@ -3560,7 +3560,7 @@ next@15.3.2:
   resolved "https://registry.yarnpkg.com/next/-/next-15.3.2.tgz#97510629e38a058dd154782a5c2ec9c9ab94d0d8"
   integrity sha512-CA3BatMyHkxZ48sgOCLdVHjFU36N7TF1HhqAHLFOkV6buwZnvMI84Cug8xD56B9mCuKrqXnLn94417GrZ/jjCQ==
   dependencies:
-    "@next/env" "15.3.2"
+    "@next/NEXT_PUBLIC_ENV" "15.3.2"
     "@swc/counter" "0.1.3"
     "@swc/helpers" "0.5.15"
     busboy "1.6.0"
@@ -3849,7 +3849,7 @@ prop-types@^15.8.1:
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
   dependencies:
-    loose-envify "^1.4.0"
+    loose-NEXT_PUBLIC_ENVify "^1.4.0"
     object-assign "^4.1.1"
     react-is "^16.13.1"
 
@@ -4551,7 +4551,7 @@ undici-types@~6.21.0:
 unrs-resolver@^1.6.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/unrs-resolver/-/unrs-resolver-1.7.2.tgz#a6844bcb9006020b58e718c5522a4f4552632b6b"
-  integrity sha512-BBKpaylOW8KbHsu378Zky/dGh4ckT/4NW/0SHRABdqRLcQJ2dAOjDo9g97p04sWflm0kqPqpUatxReNV/dqI5A==
+  integrity sha512-BBKpaylOW8KbHsu378Zky/dGh4ckT/4NW/0SHRABdqRLcQJ2dAOjDo9g97p04sWflm0kqPqpUatxRNEXT_PUBLIC_ENV/dqI5A==
   dependencies:
     napi-postinstall "^0.2.2"
   optionalDependencies:

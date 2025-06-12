@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "@components/Link/Link"
 import Text from "@components/Text/Text";
 
-import navigationCss from "./navigation.module.css";
+import navigationCss from "./navigation.module.scss";
 
 export type NavigationItemType = {
   name: string,

@@ -2,7 +2,7 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import pino from "pino";
 import { pinoHttp } from "pino-http";
 
-const isProd = process.env.ENV === 'production'
+const isProd = process.env.NEXT_PUBLIC_ENV === 'production'
 
 const logger = pino({
   redact: {
@@ -26,12 +26,9 @@ const logger = pino({
     }
 })
 
-//export const serverLogger = {
-//  info: (message: any) => message === null || message === undefined ? logger.info('(null)') : logger.info(message),
-//  error: (message: any) => message === null || message === undefined ? logger.error('(null)') : logger.error(message),
-//  warn: (message: any) => message === null || message === undefined ? logger.warn('(null)') : logger.warn(message),
-//  debug: (message: any) => message === null || message === undefined ? logger.debug('(null)') : logger.debug(message),
-//}
+export const serverLogger = {
+  error: (error: any) => logger.error(error),
+}
 
 export const requestLogger = pinoHttp({
   logger,

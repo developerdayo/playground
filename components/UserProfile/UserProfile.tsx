@@ -1,17 +1,17 @@
 'use client'
+
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { supabase } from '@lib/supabase/client'
-import { set, z } from 'zod/v4'
+import { z } from 'zod/v4'
 
 import type { ProfileType } from '@/utils/types'
-import { isAuthApiError, type User } from '@supabase/supabase-js'
-import { ProfileSchema } from '@/utils/schemas'
+import type { User } from '@supabase/supabase-js'
+import { ErrorSchema, ProfileSchema } from '@/utils/schemas'
 
 import { EditableField } from '@components/EditableField/EditableField'
 
 import userProfileCss from './user-profile.module.scss'
-import { Button } from '../Buttton/Button'
 import { queue } from '../ToastRegion/ToastRegion'
 
 type UserProfileProps = {
@@ -36,7 +36,7 @@ export const UserProfile = ({user, profile}: UserProfileProps) => {
       if (error) throw error
       if (data && data.length > 0) setUserData(ProfileSchema.parse(data[0]))
     } catch (error) {
-      console.log('Error updating user pofile data', error)
+      setError(ErrorSchema.parse(error).message)
     }
 }
 
@@ -49,8 +49,7 @@ const handleUpdateEmail = async (fieldName: string, fieldValue: string) => {
     data.user.new_email ? setIsEmailChangePending(true) : setIsEmailChangePending(false)
     setError(null)
     } catch (error) {
-      if (isAuthApiError(error)) setError(`${error.message}`)
-      console.log('Error updating email', error)
+      setError(ErrorSchema.parse(error).message)
     }
   }
 

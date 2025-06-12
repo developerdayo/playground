@@ -1,0 +1,13 @@
+@use "sass:map";
+@use '../../utils/styles/space.module.scss' as space;
+@use '../../utils/styles/colors.module.scss' as colors;
+
+.nav {
+  display: flex;
+  gap: 10px;
+}
+
+.item {
+  font-weight: bold;
+  border-bottom: 1px solid map.get(colors.$colors, 'yellow');
+}

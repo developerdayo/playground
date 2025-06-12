@@ -13,7 +13,6 @@ export default function LoginPage() {
   const [isSuccess, setIsSuccess] = useState(false)
 
   const handleLogin = async (formData: FormData) => {
-
     const result = await login(formData)
     result.error && setError(result.error)
   }
@@ -36,7 +35,7 @@ export default function LoginPage() {
         name='password'
         type='password'
       />
-      {error && <p className={loginCss['error']}>{error}</p>}
+      {error && <p className={loginCss['error']}>Error: {error}</p>}
       {isSuccess && <p>Please check your email to validate the creation of your account.</p>}
       <Button className={buttonCss['button']} formAction={handleLogin}>Log in</Button>
       <Button className={buttonCss['button']} formAction={handleSignup}>Sign up</Button>
