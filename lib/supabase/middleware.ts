@@ -50,9 +50,9 @@ export async function updateSession(request: NextRequest) {
 
     const redirectResponse = NextResponse.redirect(url)
 
-    const supabaseCoookies = supabaseResponse.cookies.getAll()
+    const supabaseCookies = supabaseResponse.cookies.getAll()
 
-    supabaseCoookies.forEach((cookie) => {
+    supabaseCookies.forEach((cookie) => {
       redirectResponse.cookies.set(cookie)
     })
 
