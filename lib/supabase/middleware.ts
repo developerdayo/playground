@@ -47,8 +47,17 @@ export async function updateSession(request: NextRequest) {
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone()
     url.pathname = '/login'
+
     const redirectResponse = NextResponse.redirect(url)
+
+    const supabaseCoookies = supabaseResponse.cookies.getAll()
+
+    supabaseCoookies.forEach((cookie) => {
+      redirectResponse.cookies.set(cookie)
+    })
+
     redirectResponse.headers.delete(HEADER_AUTH)
+
     return redirectResponse
   }
 
