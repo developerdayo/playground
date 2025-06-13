@@ -1,12 +1,4 @@
-import { Navigation } from "../../components/Navigation/Navigation"
-import { MOCK_LINKS } from "../../mocks/links"
-
-export const Page = () => {
-  return (
-    <>
-      <Navigation items={MOCK_LINKS} />
-      <div>Hello</div>
-    </>
-  )
+const GoalsPage = () => {
+  return <h1>Goals</h1>
 }
-export default Page
+export default GoalsPage

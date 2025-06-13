@@ -33,6 +33,7 @@ export const UserProfile = ({user, profile}: UserProfileProps) => {
   const handleUpdateProfileData = async (fieldName: string, fieldValue: string) => {
     try {
       const { data, error } = await supabase.from('profiles').update({ [fieldName]: fieldValue }).eq('user_id', user.id).select()
+      
       if (error) throw error
       if (data && data.length > 0) setUserData(ProfileSchema.parse(data[0]))
     } catch (error) {
@@ -43,10 +44,16 @@ export const UserProfile = ({user, profile}: UserProfileProps) => {
 const handleUpdateEmail = async (fieldName: string, fieldValue: string) => {
   try {
     EmailSchema.parse(fieldValue)
+
     const { data, error } = await supabase.auth.updateUser({ [fieldName]: fieldValue }, { emailRedirectTo: 'http://localhost:3000/profile?redirectSource=emailChange' })
+
     if (error) throw error
-    if (data) setConfirmationMessage(`Please finalize the email change via the confirmation emails sent to the current email: ${user.email} and the new email: ${fieldValue}`)
-    data.user.new_email ? setIsEmailChangePending(true) : setIsEmailChangePending(false)
+
+    if (data) {
+      setConfirmationMessage(`Please finalize the email change via the confirmation emails sent to the current email: ${user.email} and the new email: ${fieldValue}`)
+    }
+
+    setIsEmailChangePending(!!data.user.new_email)
     setError(null)
     } catch (error) {
       setError(ErrorSchema.parse(error).message)
@@ -54,11 +61,28 @@ const handleUpdateEmail = async (fieldName: string, fieldValue: string) => {
   }
 
   useEffect(() => {
+    const hasMessage = searchParams.has('message')
+    const isEmailChange = searchParams.get('redirectSource') === 'emailChange'
+    /**
+     * Display of Toast Messages
+    **/
+
+    /** error toast */
     if (error) queue.add({ title: 'Error', description: error })
-    if ((!searchParams.has('message') && searchParams.get('redirectSource') === 'emailChange')) queue.add({ title: 'Success', description: 'Your email was successfully updated.' })
-    if ((searchParams.has('message') && searchParams.get('redirectSource') === 'emailChange')) queue.add({ title: 'Success', description: z.string().parse(searchParams.get('message'))})
+
+    /** successfully completed step 1 of 2 email confirmation change toast */
+    if (hasMessage && isEmailChange) {
+      queue.add({ title: 'Success', description: z.string().parse(searchParams.get('message'))})
+    }
+
+    /** successfully completed email change toast */
+    if (!hasMessage && isEmailChange) {
+      queue.add({ title: 'Success', description: 'Your email was successfully updated.' })
+    }
+
+    /** confirmation toast */
     if (confirmationMessage) queue.add({ title: confirmationMessage })
-  }, [error, isEmailChangePending])
+  }, [confirmationMessage, error, isEmailChangePending, searchParams])
 
   return (
     <div className={userProfileCss['container']}>

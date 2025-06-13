@@ -1,7 +1,6 @@
 'use client'
 
 import { Ref } from 'react'
-import ButtonCss from './buttton.module.scss'
 import clsx from 'clsx'
 import { Button as RACButton } from 'react-aria-components'
 
@@ -15,6 +14,7 @@ type ButtonType = {
 
 /**
  * Uses React Aria Button component unless if a server action is passed to it.
+ * TODO: does this make sense? 
  */
 export const Button = ({children, onPress, formAction, ref, className, ...props}: ButtonType) => {
   return formAction ? (

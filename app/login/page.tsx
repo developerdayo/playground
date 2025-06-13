@@ -14,13 +14,20 @@ export default function LoginPage() {
 
   const handleLogin = async (formData: FormData) => {
     const result = await login(formData)
-    result.error && setError(result.error)
+
+    if (result.error) setError(result.error)
   }
+
   const handleSignup = async (formData: FormData) => {
     const result = await signup(formData)
-    result.error && setError(result.error)
-    result.success && setIsSuccess(result.success)
+
+    if (result.error) {
+      setError(result.error)
+    } else if (result.success) {
+      setIsSuccess(result.success)
+    }
   }
+  
   return (
     <Form className={loginCss['form']}>
       <InputField

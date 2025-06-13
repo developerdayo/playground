@@ -27,7 +27,7 @@ const logger = pino({
 })
 
 export const serverLogger = {
-  error: (error: any) => logger.error(error),
+  error: (error: unknown) => logger.error(error),
 }
 
 export const requestLogger = pinoHttp({

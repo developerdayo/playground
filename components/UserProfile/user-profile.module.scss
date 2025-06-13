@@ -10,5 +10,5 @@
 .status-pending {
   background: green;
   color: white;
-  padding: map-get($map: space.$gap, $key: 'small')
+  padding: map.get(space.$gap, 'small')
 }

@@ -11,8 +11,8 @@ type LinkType = {
 
 const Link = ({url, name, isCurrent, className}: LinkType) => {
   return (
-    <NextLink href={url} aria-current={`${isCurrent}`} className={className}>
-      <Text tag={"span"} isCurrent={`${isCurrent}`}>{name}</Text>
+    <NextLink href={url} aria-current={isCurrent} className={className}>
+      <Text tag={"span"} isCurrent={isCurrent}>{name}</Text>
     </NextLink>
   )
 }
