@@ -6,13 +6,13 @@ import { Input as RACInput, TextField as RACTextField, Label as RACLabel } from 
 /**
  * Composite component build with React Aria TextField, Label, and Input.
  */
-type InputFieldProps = {
+interface InputFieldProps extends TextFieldProps {
   isRequired: boolean
   label?: string
   name?: string
   inputProps?: InputProps
   labelProps?: LabelProps
-} & TextFieldProps
+}
 
 export const InputField = ({
   isRequired,

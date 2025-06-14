@@ -6,6 +6,7 @@ export const middleware = async (request: NextRequest) => {
   
   const supabaseResponse = await updateSession(request)
   const pathname = request.nextUrl.pathname
+
   supabaseResponse.headers.set('x-current-pathname', pathname)
 
   supabaseResponse.headers.forEach((value, key) => {
@@ -16,5 +17,14 @@ export const middleware = async (request: NextRequest) => {
 }
 
 export const config = {
-  matcher: '/((?!_next/static|_next/image|favicon.ico|api/|login|auth|logout|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'
+  matcher: [
+    '/',
+    '/dashboard',
+    '/dashboard/:path*',
+    '/profile',
+    '/profile/:path*',
+    '/goals',
+    '/goals/:path*',
+    '/logout'
+  ]
 }

@@ -7,16 +7,16 @@ import Text from "@components/Text/Text";
 
 import navigationCss from "./navigation.module.scss";
 
-export type NavigationItemType = {
-  name: string,
+export interface NavigationItem {
+  name: string
   url: string
 }
 
-type NavigationType = {
-  items:  NavigationItemType[]
+type NavigationProps = {
+  items:  NavigationItem[]
 }
 
-const NavigationLink = ({url, name}: NavigationItemType) => {
+const NavigationLink = ({url, name}: NavigationItem) => {
   const currentPath = usePathname()
 
   return (
@@ -28,7 +28,7 @@ const NavigationLink = ({url, name}: NavigationItemType) => {
   )
 }
 
-export const Navigation = ({ items }: NavigationType) => {
+export const Navigation = ({ items }: NavigationProps) => {
   return (
     items.length > 0 ? (
       <nav className={navigationCss['nav']}>

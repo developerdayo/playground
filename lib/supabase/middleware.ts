@@ -38,13 +38,12 @@ export async function updateSession(request: NextRequest) {
   
   // Add a custom header with authentication status
   if (user) supabaseResponse.headers.set(HEADER_AUTH, user.id)
-
+  
   if (
     !user &&
     !request.nextUrl.pathname.startsWith('/login') &&
     !request.nextUrl.pathname.startsWith('/auth')
   ) {
-    // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone()
     url.pathname = '/login'
 

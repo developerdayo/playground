@@ -1,17 +1,18 @@
-import type { NavigationItemType } from "@components/Navigation/Navigation"
+import type { NavigationItem } from "@components/Navigation/Navigation"
 
 import { default as NextLink } from "next/link"
 
 import Text from "@components/Text/Text"
 
-type LinkType = {
+interface LinkType extends NavigationItem {
   isCurrent: "true" | "false"
   className?: string
-} & NavigationItemType
+  prefetch?: boolean
+}
 
-const Link = ({url, name, isCurrent, className}: LinkType) => {
+const Link = ({url, name, isCurrent, className, prefetch}: LinkType) => {
   return (
-    <NextLink href={url} aria-current={isCurrent} className={className}>
+    <NextLink href={url} aria-current={isCurrent} className={className} prefetch={prefetch ?? false}>
       <Text tag={"span"} isCurrent={isCurrent}>{name}</Text>
     </NextLink>
   )
