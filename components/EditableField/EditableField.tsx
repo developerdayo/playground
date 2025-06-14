@@ -18,8 +18,12 @@ export const EditableField = ({label, fieldName, fieldValue, inputType, onSave}:
 
   const handleSave = async () => {
     if (inputRef.current?.value) {
-      await onSave(fieldName, inputRef.current.value)
-      setIsEditMode(false)
+      try {
+        await onSave(fieldName, inputRef.current.value)
+        setIsEditMode(false)
+      } catch (error) {
+        console.error('Error saving field:', error)
+      }
     }
   }
 
@@ -28,9 +32,7 @@ export const EditableField = ({label, fieldName, fieldValue, inputType, onSave}:
       <div className={editableFieldCss['container']}>
         <p>{label}: <input type={inputType} ref={inputRef} /></p>
         <Button onPress={() => setIsEditMode(false)} className={[editableFieldCss['button'], editableFieldCss['cancel-button']]}>Cancel</Button>
-        <Button onPress={async () => {
-          handleSave()
-        }} className={editableFieldCss['button']}>Save</Button>
+        <Button onPress={handleSave} className={editableFieldCss['button']}>Save</Button>
       </div>
     ) : (
       <div className={editableFieldCss['container']}>
