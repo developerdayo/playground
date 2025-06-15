@@ -34,3 +34,5 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(({
     </RACTextField>
   );
 })
+
+InputField.displayName = 'InputField';

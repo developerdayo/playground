@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
 
-import { Label as RACLabel } from 'react-aria-components'
 import { Button } from '@components/Buttton/Button'
 
 import { InputField } from '../InputField/InputField'
