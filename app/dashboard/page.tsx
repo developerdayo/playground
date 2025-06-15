@@ -1,7 +1,9 @@
+import Text from "@/components/Text/Text"
+
 const DashboardPage = async () => {
   return (
     <div>
-      <h1>Dashboard</h1>
+      <Text tag={"h1"}>Dashboard</Text>
     </div>
   )
 }

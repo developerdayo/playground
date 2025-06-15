@@ -4,8 +4,10 @@ import "./globals.css";
 import { Header } from "../components/Header/Header";
 import { ToastRegion } from "@/components/ToastRegion/ToastRegion";
 
+import globalCss from '../utils/styles/global.module.scss'
+
 const crimson_text = Crimson_Text({
-  weight: '400',
+  weight: '600',
   subsets: ['latin'],
 });
 
@@ -21,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${crimson_text.className}`}>
+      <body className={`${crimson_text.className} ${globalCss['body']}`}>
         <Header />
         <ToastRegion />
         {children}

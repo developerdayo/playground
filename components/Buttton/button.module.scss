@@ -1,0 +1,13 @@
+@use "sass:map";
+@use '../../utils/styles/spacing.module.scss' as spacing;
+@use '../../utils/styles/mixins.module.scss' as mixins;
+
+.button {
+  @include mixins.button;
+  padding: map.get(spacing.$gap, 'small');
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

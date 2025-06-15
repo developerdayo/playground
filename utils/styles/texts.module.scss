@@ -1,0 +1,20 @@
+@use "sass:map";
+@use 'colors.module.scss' as global;
+
+$colors: (
+  primary: map.get(global.$colors, 'blood-orange'),    // Default text on dark bg
+  secondary: map.get(global.$colors,'dutch-white'),         // Muted text on dark bg
+  onLight: map.get(global.$colors,'payne-gray'),     // Text on baby-powder or lavender-pink
+  accent: map.get(global.$colors,'blood-orange'),   // Accent/emphasized text
+);
+
+.h1 {
+  font-size: 24px
+}
+.h2 {}
+.h3 {}
+.h4 {}
+.h5 {}
+.h6 {}
+.p {}
+.span {}

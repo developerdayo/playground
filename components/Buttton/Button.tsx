@@ -4,6 +4,8 @@ import { Ref } from 'react'
 import clsx from 'clsx'
 import { Button as RACButton } from 'react-aria-components'
 
+import buttonCss from './button.module.scss'
+
 type ButtonType = {
   children: React.ReactNode
   onPress?: () => void
@@ -19,7 +21,7 @@ type ButtonType = {
 export const Button = ({children, onPress, formAction, ref, className, ...props}: ButtonType) => {
   return formAction ? (
     <button
-      className={clsx(className)}
+      className={clsx(className ?? buttonCss['button'])}
       formAction={formAction}
       onClick={onPress}
       ref={ref}
@@ -29,7 +31,7 @@ export const Button = ({children, onPress, formAction, ref, className, ...props}
     </button>
     ) : (
       <RACButton
-        className={clsx(className)}
+        className={clsx(className ?? buttonCss['button'])}
         onPress={onPress}
         ref={ref}
         {...props}

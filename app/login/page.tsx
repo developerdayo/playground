@@ -1,12 +1,15 @@
 'use client'
 
+import { useState } from "react"
+
+import { login, signup } from "./actions"
+
 import { Form } from "@/components/Form/Form"
 import { Button } from "@/components/Buttton/Button"
 import { InputField } from "@/components/InputField/InputField"
-import { login, signup } from "./actions"
+
 import loginCss from './login.module.scss'
-import buttonCss from '@/components/Buttton/buttton.module.scss'
-import { useState } from "react"
+
 
 export default function LoginPage() {
   const [error, setError] = useState<string | null>(null)
@@ -44,8 +47,10 @@ export default function LoginPage() {
       />
       {error && <p className={loginCss['error']}>Error: {error}</p>}
       {isSuccess && <p>Please check your email to validate the creation of your account.</p>}
-      <Button className={buttonCss['button']} formAction={handleLogin}>Log in</Button>
-      <Button className={buttonCss['button']} formAction={handleSignup}>Sign up</Button>
+      <div className={loginCss['button-container']}>
+        <Button formAction={handleLogin}>Log in</Button>
+        <Button formAction={handleSignup}>Sign up</Button>
+      </div>
     </Form>
   )
 }

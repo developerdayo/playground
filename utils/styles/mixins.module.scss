@@ -1,4 +1,13 @@
+@use "sass:map";
+@use '../../utils/styles/buttons.module.scss' as buttons;
+
 @mixin container {
   margin: 0 auto;
   width: 80vw;
+}
+
+@mixin button {
+  background-color: map.get(buttons.$background-state, 'active');
+  color: map.get(buttons.$text-state, 'active');
+  text-shadow: 1px 1px 0 black;
 }

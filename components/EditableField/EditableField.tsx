@@ -1,6 +1,9 @@
 import { useRef, useState } from 'react'
 
+import { Label as RACLabel } from 'react-aria-components'
 import { Button } from '@components/Buttton/Button'
+
+import { InputField } from '../InputField/InputField'
 
 import editableFieldCss from './editable-field.module.scss'
 
@@ -10,9 +13,10 @@ type EditableFieldProps = {
   fieldName: string
   inputType: "text" | "email"
   onSave: (field: string, value: string) => Promise<void>
+  className?: string
 }
 
-export const EditableField = ({label, fieldName, fieldValue, inputType, onSave}: EditableFieldProps) => {
+export const EditableField = ({label, fieldName, fieldValue, inputType, className, onSave}: EditableFieldProps) => {
   const [isEditMode, setIsEditMode] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -29,14 +33,15 @@ export const EditableField = ({label, fieldName, fieldValue, inputType, onSave}:
 
   return (
     isEditMode ? (
-      <div className={editableFieldCss['container']}>
-        <p>{label}: <input type={inputType} ref={inputRef} /></p>
-        <Button onPress={() => setIsEditMode(false)} className={[editableFieldCss['button'], editableFieldCss['cancel-button']]}>Cancel</Button>
+      <div className={className}>
+        <InputField label={label} type={inputType} ref={inputRef} />
+        <Button onPress={() => setIsEditMode(false)} className={editableFieldCss['cancel-button']}>Cancel</Button>
         <Button onPress={handleSave} className={editableFieldCss['button']}>Save</Button>
       </div>
     ) : (
-      <div className={editableFieldCss['container']}>
-        <p>{label}: {fieldValue} </p>
+      <div className={className}>
+        <span>{label}: </span>
+        <span>{fieldValue}</span>
         <Button onPress={() => setIsEditMode(true)} className={editableFieldCss['button']}>Edit</Button>
       </div>
     )

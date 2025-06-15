@@ -1,0 +1,22 @@
+@use "sass:map";
+@use '../../utils/styles/colors.module.scss' as global;
+@use '../../utils/styles/backgrounds.module.scss' as backgrounds;
+@use '../../utils/styles/borders.module.scss' as borders;
+@use '../../utils/styles/spacing.module.scss' as spacing;
+
+.container {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  gap: 10px;
+}
+
+.input {
+  padding: map.get(spacing.$padding, 'formElements');
+  background: map.get(backgrounds.$colors, 'elevated');
+  border: 1px solid map.get(borders.$colors, 'default');
+  box-shadow: 2px 2px 0px map.get(global.$colors, 'blood-orange')
+}
+
+.label {
+  white-space: nowrap;
+}

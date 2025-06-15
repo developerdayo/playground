@@ -1,0 +1,7 @@
+@use "sass:map";
+@use 'colors.module.scss' as global;
+
+$colors: (
+  default: map.get(global.$colors, 'blood-orange'),
+  light: map.get(global.$colors, 'dutch-white'),
+);

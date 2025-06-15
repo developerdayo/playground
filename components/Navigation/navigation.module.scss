@@ -1,6 +1,7 @@
 @use "sass:map";
-@use '../../utils/styles/space.module.scss' as space;
-@use '../../utils/styles/colors.module.scss' as colors;
+@use '../../utils/styles/spacing.module.scss' as spacing;
+@use '../../utils/styles/borders.module.scss' as borders;
+@use '../../utils/styles/texts.module.scss' as texts;
 
 .nav {
   display: flex;
@@ -8,6 +9,7 @@
 }
 
 .item {
+  color: map.get(texts.$colors, 'accent');
   font-weight: bold;
-  border-bottom: 1px solid map.get(colors.$colors, 'yellow');
+  border-bottom: 1px solid map.get(borders.$colors, '');
 }

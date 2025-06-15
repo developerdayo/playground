@@ -1,0 +1,10 @@
+@use "sass:map";
+@use 'backgrounds.module.scss' as backgrounds;
+@use 'texts.module.scss' as text;
+
+.body {
+  color: map.get(text.$colors, 'primary');
+  background: map.get(backgrounds.$colors, 'base');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+};

@@ -1,0 +1,10 @@
+@use "sass:map";
+@use 'colors.module.scss' as global;
+
+$background-state: (
+  active: map.get(global.$colors, 'blood-orange'),
+);
+
+$text-state: (
+  active: map.get(global.$colors, 'platinum'),
+)

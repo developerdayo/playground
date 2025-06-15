@@ -6,6 +6,7 @@ import { Suspense } from "react"
 import { headers } from "next/headers"
 import { HEADER_AUTH } from "@/utils/variables"
 import { ProfileSchema } from "@/utils/schemas"
+import Text from "@/components/Text/Text"
 
 const ProfilePage = async () => {
   const supabase = await createClient()
@@ -21,7 +22,7 @@ const ProfilePage = async () => {
     <>
       <div className={profilePageCss['container']}>
         <div className={profilePageCss['header']}>
-          <h1>Profile</h1>
+          <Text tag="h1">Profile</Text>
         </div>
         {isUserLoggedIn && (
           <Suspense fallback={"Loading..."}>

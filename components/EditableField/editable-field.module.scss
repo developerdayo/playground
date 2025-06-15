@@ -1,20 +1,27 @@
 @use "sass:map";
-@use '../../utils/styles/space.module.scss' as space;
+@use '../../utils/styles/spacing.module.scss' as spacing;
+@use '../../utils/styles/backgrounds.module.scss' as backgrounds;
+@use '../../utils/styles/texts.module.scss' as texts;
 
-.container {
-  display: flex;
-  gap: map.get(space.$gap, 'small')
+@mixin base {
+  padding: map.get(spacing.$padding, 'formElements');
+  border-radius: 3px;
+  border: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: .03em;
 }
 
 .button {
-  background: transparent;
-  border: none;
-  text-transform: uppercase;
+  @include base;
+  background: map.get(backgrounds.$colors, 'accent');
   &:hover {
     cursor: pointer;
   }
 }
 
 .cancel-button {
-  color: red;
+  @include base;
+  background-color: map.get(backgrounds.$state, 'error');
+  color: map.get(texts.$colors, 'secondary')
 }

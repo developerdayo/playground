@@ -1,14 +1,22 @@
 @use "sass:map";
-@use '../../utils/styles/space.module.scss' as space;
+@use '../../utils/styles/spacing.module.scss' as spacing;
 @use '../../utils/styles/colors.module.scss' as colors;
 @use '../../utils/styles/mixins.module.scss' as mixins;
 
 .container {
   @include mixins.container;
+  display: grid;
+  gap: 15px;
 }
 
 .status-pending {
   background: green;
   color: white;
-  padding: map.get(space.$gap, 'small')
+  padding: map.get(spacing.$gap, 'small')
+}
+
+.row {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: minmax(5vw, min-content) min-content min-content;
 }

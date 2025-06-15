@@ -1,0 +1,14 @@
+@use "sass:map";
+@use 'colors.module.scss' as global;
+
+$colors: (
+  base: map.get(global.$colors, 'burnt-sienna'),      // Main background (deep, rich contrast)
+  elevated: map.get(global.$colors, 'columbia-blue'), // Elevated containers or panels
+  subtle: map.get(global.$colors, 'platinum'),   // Light UI areas, modals, etc.
+  accent: map.get(global.$colors, 'columbia-blue'), // Highlight or decorative areas
+);
+
+$state: (
+  success: map.get(global.$colors, 'dutch-white'),         // Status backgrounds (success, positive)
+  error: map.get(global.$colors, 'panic-red')
+);

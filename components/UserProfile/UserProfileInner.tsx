@@ -110,9 +110,9 @@ const handleUpdateEmail = async (fieldName: string, fieldValue: string) => {
   return (
     <QueryProvider>
       <div className={userProfileCss['container']}>
-        <EditableField label="First Name" fieldValue={firstName} fieldName="first_name" inputType="text" onSave={handleUpdateProfileData} />
-        <EditableField label="Last Name" fieldValue={lastName} fieldName="last_name" inputType="text" onSave={handleUpdateProfileData} />
-        <EditableField label="Email" fieldValue={EmailSchema.parse(user.email)} fieldName="email" inputType="email" onSave={handleUpdateEmail} />
+        <EditableField label="First Name" fieldValue={firstName} fieldName="first_name" inputType="text" className={userProfileCss['row']} onSave={handleUpdateProfileData} />
+        <EditableField label="Last Name" fieldValue={lastName} fieldName="last_name" inputType="text" className={userProfileCss['row']} onSave={handleUpdateProfileData} />
+        <EditableField label="Email" fieldValue={EmailSchema.parse(user.email)} fieldName="email" className={userProfileCss['row']} inputType="email" onSave={handleUpdateEmail} />
         {isEmailChangePending && <p className={userProfileCss['status-pending']}>Pending</p>}
       </div>
     </QueryProvider>

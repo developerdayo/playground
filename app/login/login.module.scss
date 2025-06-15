@@ -1,10 +1,17 @@
 @use "sass:map";
 @use '../../utils/styles/mixins.module.scss' as mixins;
-@use '../../utils/styles/space.module.scss' as space;
+@use '../../utils/styles/spacing.module.scss' as spacing;
 
 .form {
   @include mixins.container;
   display: flex;
   flex-direction: column;
-  gap: map.get(space.$gap, 'small')
+  gap: map.get(spacing.$gap, 'small')
+}
+
+.button-container {
+    display: grid;
+    width: 20vw;
+    gap: 15px;
+    margin: 15px auto;
 }
